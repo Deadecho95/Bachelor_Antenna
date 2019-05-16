@@ -6,3 +6,5 @@ DEFINE footprint2 footprint2
 ASSIGN footprint2 libMode shared
 DEFINE footprint3 footprint3
 ASSIGN footprint3 libMode shared
+DEFINE footprint4 footprint4
+ASSIGN footprint4 libMode shared
