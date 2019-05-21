@@ -1,0 +1,16 @@
+#
+# Edit Lock-Stake file. CAUTION: Please do not change.
+#
+# Information about current Edit Lock Owner.
+#
+LockStakeVersion               1.1
+LoginName                      johan.chenaux
+HostName                       WE6905.hevs.ch
+ProcessIdentifier              7868
+ProcessCreationTime_UTC        1558344055
+ProcessCreationTime_Readable   05/20/19 11:20:55 W. Europe Daylight Time
+AppIdentifier                  OA File System Design Manager
+OSType                         win32
+ReasonForPlacingEditLock       OpenAccess edit lock
+FilePathUsedToEditLock         R:\Diploma\TD2019\SYND\johan.chenaux\Software\Bachelor_Antenna_AnSys\Bachelor.aedb\footprint3\tech.db.cdslck
+TimeEditLocked                 05/20/19 11:20:57 W. Europe Daylight Time
