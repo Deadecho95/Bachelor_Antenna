@@ -1,0 +1,58 @@
+Added Component: Designator=J1(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J2(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J3(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J4(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=M1(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M2(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M3(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M4(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Z1(RESISTOR 2012 REFLOW)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Z2(RESISTOR 2012 REFLOW)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Z3(RESISTOR 2012 REFLOW)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=Z4(RESISTOR 2012 REFLOW)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetJ1_1 Pin=M1-1
+Added Net: Name=NetJ1_1
+Added Net: Name=NetJ1_2
+Added Pin To Net: NetName=NetJ2_1 Pin=M2-1
+Added Net: Name=NetJ2_1
+Added Pin To Net: NetName=NetJ3_1 Pin=Z2-2
+Added Pin To Net: NetName=NetJ3_1 Pin=Z4-2
+Added Net: Name=NetJ3_1
+Added Net: Name=NetJ3_2
+Added Pin To Net: NetName=NetJ4_1 Pin=Z3-2
+Added Pin To Net: NetName=NetJ4_1 Pin=Z4-1
+Added Net: Name=NetJ4_1
+Added Pin To Net: NetName=NetM3_1 Pin=M3-1
+Added Pin To Net: NetName=NetM3_1 Pin=Z1-2
+Added Pin To Net: NetName=NetM3_1 Pin=Z2-1
+Added Net: Name=NetM3_1
+Added Pin To Net: NetName=NetM4_1 Pin=M4-1
+Added Pin To Net: NetName=NetM4_1 Pin=Z1-1
+Added Pin To Net: NetName=NetM4_1 Pin=Z3-1
+Added Net: Name=NetM4_1
+Added Class: Name=Test_PCB
+Added Room: Name=Test_PCB

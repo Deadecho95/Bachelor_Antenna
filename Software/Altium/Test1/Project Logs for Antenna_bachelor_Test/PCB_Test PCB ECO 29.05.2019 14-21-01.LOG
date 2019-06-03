@@ -1,0 +1,25 @@
+Change Component Designator: OldDesignator=M1 NewDesignator=M3
+Change Component Designator: OldDesignator=M2 NewDesignator=M4
+Added Component: Designator=J1(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J2(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J3(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J4(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=M1(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M2(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetJ1_1 Pin=M1-1
+Added Pin To Net: NetName=NetJ2_1 Pin=M2-1
+Added Member To Class: ClassName=Test_PCB Member=Component M3 =Value
+Added Member To Class: ClassName=Test_PCB Member=Component M4 =Value
+Added Room: Name=Test_PCB

@@ -1,0 +1,37 @@
+Added Component: Designator=J1(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J2(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J3(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J4(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Pin To Net: NetName=NetJ1_1 Pin=J1-1
+Added Pin To Net: NetName=NetJ1_2 Pin=J1-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J1-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J1-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J1-2
+Added Pin To Net: NetName=NetJ2_1 Pin=J2-1
+Added Pin To Net: NetName=NetJ1_2 Pin=J2-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J2-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J2-2
+Added Pin To Net: NetName=NetJ1_2 Pin=J2-2
+Added Pin To Net: NetName=NetJ3_1 Pin=J3-1
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J3-2
+Added Pin To Net: NetName=NetJ4_1 Pin=J4-1
+Added Pin To Net: NetName=NetJ3_2 Pin=J4-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J4-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J4-2
+Added Pin To Net: NetName=NetJ3_2 Pin=J4-2
+Added Member To Class: ClassName=Test_PCB Member=Component J1 CONSMA001-G
+Added Member To Class: ClassName=Test_PCB Member=Component J2 CONSMA001-G
+Added Member To Class: ClassName=Test_PCB Member=Component J3 CONSMA001-G
+Added Member To Class: ClassName=Test_PCB Member=Component J4 CONSMA001-G
+Added Room: Name=Test_PCB

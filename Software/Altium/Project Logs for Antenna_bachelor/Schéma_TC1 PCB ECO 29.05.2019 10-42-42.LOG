@@ -1,0 +1,50 @@
+Added Component: Designator=J1(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J2(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J3(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=J4(SMA TH Vertical Linx CONSMA001-G)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "CONSMA001-G"; VariantName = "[No Variations]"
+Added Component: Designator=M1(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M2(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M3(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=M4(Screw Hex Socket M2.5X4 Connected)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Component: Designator=T2(TC1-1TG2+)
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Value"; Value = "{Value}"; VariantName = "[No Variations]"
+Added Net: Name=GND
+Added Net: Name=NetJ1_1
+Added Net: Name=NetJ1_2
+Added Net: Name=NetJ2_1
+Added Pin To Net: NetName=NetJ3_1 Pin=T2-1
+Added Net: Name=NetJ3_1
+Added Net: Name=NetJ3_2
+Added Pin To Net: NetName=NetJ4_1 Pin=T2-3
+Added Net: Name=NetJ4_1
+Added Pin To Net: NetName=NetM1_1 Pin=M1-1
+Added Net: Name=NetM1_1
+Added Pin To Net: NetName=NetM2_1 Pin=M2-1
+Added Net: Name=NetM2_1
+Added Pin To Net: NetName=NetM3_1 Pin=M3-1
+Added Pin To Net: NetName=NetM3_1 Pin=T2-6
+Added Net: Name=NetM3_1
+Added Pin To Net: NetName=NetM4_1 Pin=M4-1
+Added Pin To Net: NetName=NetM4_1 Pin=T2-4
+Added Net: Name=NetM4_1
+Added Class: Name=schéma_NCS2
+Added Class: Name=schéma_TC1
+Added Room: Name=schéma_NCS2
+Added Room: Name=schéma_TC1
