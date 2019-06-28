@@ -1,0 +1,368 @@
+{
+  "Application": {
+    "Screens": [
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 28,
+              "Green": 28,
+              "Blue": 28
+            },
+            "Alpha": 255,
+            "Name": "box1",
+            "X": 0,
+            "Y": 0,
+            "Width": 240,
+            "Height": 320,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId1",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "title",
+            "X": 77,
+            "Y": 0,
+            "Width": 86,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "FileNameImage": "",
+            "Alpha": 255,
+            "StartX": 5,
+            "StartY": 5,
+            "EndX": 113,
+            "EndY": 5,
+            "LineWidth": 2,
+            "LineEndingStyle": "Butt",
+            "Name": "line1",
+            "X": 63,
+            "Y": 21,
+            "Width": 115,
+            "Height": 11,
+            "Type": "Line",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Color": {
+              "Red": 113,
+              "Green": 255,
+              "Blue": 0
+            },
+            "Direction": "Up",
+            "Alpha": 255,
+            "FileNameBackground": "__designer\\blue_progressindicators_bg_medium_progress_indicator_bg_square_90_degrees.png",
+            "IndicatorPositionX": 2,
+            "IndicatorPositionY": 2,
+            "IndicatorPositionWidth": 16,
+            "IndicatorPositionHeight": 180,
+            "ProgressRangeMin": 0,
+            "ProgressRangeMax": 100,
+            "ProgressRangeSteps": 0,
+            "ProgressRangeStepsMin": 0,
+            "ProgressInitialValue": 0,
+            "Name": "boxProgress1",
+            "X": 53,
+            "Y": 52,
+            "Width": 20,
+            "Height": 184,
+            "Type": "BoxProgress",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_icon_button_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_icon_button.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId2",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "buttonPlus",
+            "X": 147,
+            "Y": 52,
+            "Width": 60,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Pressed": "__designer\\blue_buttons_round_edge_icon_button_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_icon_button.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId3",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Name": "buttonMinus",
+            "X": 147,
+            "Y": 156,
+            "Width": 60,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId4",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "power",
+            "X": 5,
+            "Y": 265,
+            "Width": 77,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId5",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId8",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "powerValue",
+            "X": 82,
+            "Y": 265,
+            "Width": 41,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId6",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "BallLabel",
+            "X": 137,
+            "Y": 265,
+            "Width": 70,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId7",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId9",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "ballNbr",
+            "X": 207,
+            "Y": 265,
+            "Width": 28,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonPlus",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "btnPlusPressed",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "buttonMinus",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "btnMinusPressed",
+              "Type": "ActionCustom"
+            }
+          }
+        ],
+        "Name": "Screen1",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 3600
+      }
+    ],
+    "CustomContainerDefinitions": [],
+    "TextEntries": [
+      {
+        "TextEntryId": "SingleUseId1",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId2",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId3",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId4",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId5",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId6",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId7",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId8",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId9",
+        "IsResource": false
+      }
+    ],
+    "Name": "MyApplication",
+    "Resolution": {
+      "Width": 240,
+      "Height": 320
+    },
+    "SelectedColorDepth": 16,
+    "StartupScreenName": "Screen1",
+    "SelectedStartupLanguage": "GB",
+    "Skin": "Blue",
+    "TouchGfxPath": "../Middlewares/ST/TouchGFX/touchgfx/",
+    "UIPath": ".",
+    "ApplicationTemplate": {
+      "Name": "Simulator",
+      "Version": "1.0.0",
+      "Description": "STM32CubeMX Generated Simulator Application Template",
+      "AvailableColorDepths": [
+        16
+      ],
+      "AvailableImageFormats": {
+        "16": {
+          "Opaque": "RGB565",
+          "NonOpaque": "ARGB8888"
+        }
+      },
+      "AvailableResolutions": [],
+      "PhysicalButtons": [],
+      "GenerateAssetsCommand": "make -f simulator/gcc/Makefile assets -j10",
+      "PostGenerateCommand": "touchgfx update_project --project-file=../SW4STM32/SW4STM32_STM32F429i_DISCO/.project --gui-group-name=Application/User/TouchGFX/gui --generated-group-name=Application/User/TouchGFX/generated ",
+      "CompileSimulatorCommand": "make -f simulator/gcc/Makefile -j10",
+      "RunSimulatorCommand": "build\\bin\\simulator.exe",
+      "CompileTargetCommand": "",
+      "FlashTargetCommand": ""
+    }
+  },
+  "Version": "4.10.0"
+}
