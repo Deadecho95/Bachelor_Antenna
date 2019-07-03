@@ -1,0 +1,13 @@
+Output: NC Drill Files
+Type  : NC Drill
+From  : Project [Balun_And_Demodulation.PrjPCB]
+   Generated File[Balun_And_Demodulation-RoundHoles.TXT]
+   Generated File[Balun_And_Demodulation-SlotHoles.TXT]
+   Generated File[Balun_And_Demodulation.LDP]
+   Generated File[Balun_And_Demodulation.DRR]
+
+
+Files Generated   : 4
+Documents Printed : 0
+
+Finished Output Generation At 10:40:24 On 25.06.2019
