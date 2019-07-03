@@ -18,9 +18,10 @@ void Screen1Presenter::deactivate()
 
 void Screen1Presenter::update() {
 
-	//view.setPower();
+	//set the view
 	view.setBallNbr(model->getBallNbr());
 	view.setPower(model->getPower());
+	view.setPosition(model->getPosition());
 }
 
 void Screen1Presenter::btnPlusPressed() {
@@ -29,7 +30,7 @@ void Screen1Presenter::btnPlusPressed() {
 }
 
 void Screen1Presenter::btnMinusPressed() {
-	int val = (model->getBallNbr()-1)%16;
+	int16_t val = model->getBallNbr()-1;
 	if(val < 0){
 		val = 15;
 	}
@@ -37,10 +38,28 @@ void Screen1Presenter::btnMinusPressed() {
 
 }
 
-void Screen1Presenter::hardButtonPressed(uint16_t numberOfButtonpressed) {
-	model->setPower(model->getPower()+10);
-	switch (numberOfButtonpressed) {
+void Screen1Presenter::hardInterrupt(uint16_t interruptNumber){
+	uint16_t val;
+
+	switch (interruptNumber) {
 		case interrupt::RECEIVED_SIGNAL:
+			model->newSignal();
+			break;
+
+		case interrupt::BUTTON1press:
+			model->setBallNbr((model->getBallNbr()+1)%MAX_BALL+1);
+			break;
+
+		case interrupt::BUTTON2press:
+			val = (model->getBallNbr()-1);
+			if(val < 0){
+				val = MAX_BALL;
+			}
+			model->setBallNbr(val);
+			break;
+
+		case interrupt::BLUE_BUTTONpress:
+			///test///
 			model->newSignal();
 			break;
 		default:

@@ -30,7 +30,7 @@ public:
     }
 
     virtual void btnMinusPressed()=0;
-    virtual void hardButtonPressed(uint16_t numberOfButtonpressed)=0;
+    virtual void hardInterrupt(uint16_t interruptNumber)=0;
     virtual void update()=0;
 protected:
     Model* model;

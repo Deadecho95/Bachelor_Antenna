@@ -49,12 +49,12 @@ Screen1ViewBase::Screen1ViewBase() :
     buttonMinus.setLabelColorPressed(touchgfx::Color::getColorFrom24BitRGB(255, 255, 255));
     buttonMinus.setAction(buttonCallback);
 
-    power.setXY(5, 265);
+    power.setXY(5, 253);
     power.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 239, 239));
     power.setLinespacing(0);
     power.setTypedText(TypedText(T_SINGLEUSEID4));
 
-    powerValue.setXY(82, 265);
+    powerValue.setXY(80, 253);
     powerValue.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 239, 239));
     powerValue.setLinespacing(0);
     Unicode::snprintf(powerValueBuffer, POWERVALUE_SIZE, "%s", TypedText(T_SINGLEUSEID8).getText());
@@ -62,18 +62,31 @@ Screen1ViewBase::Screen1ViewBase() :
     powerValue.resizeToCurrentText();
     powerValue.setTypedText(TypedText(T_SINGLEUSEID5));
 
-    BallLabel.setXY(137, 265);
+    BallLabel.setXY(137, 253);
     BallLabel.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 239, 239));
     BallLabel.setLinespacing(0);
     BallLabel.setTypedText(TypedText(T_SINGLEUSEID6));
 
-    ballNbr.setXY(207, 265);
+    ballNbr.setXY(207, 253);
     ballNbr.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 239, 239));
     ballNbr.setLinespacing(0);
     Unicode::snprintf(ballNbrBuffer, BALLNBR_SIZE, "%s", TypedText(T_SINGLEUSEID9).getText());
     ballNbr.setWildcard(ballNbrBuffer);
     ballNbr.resizeToCurrentText();
     ballNbr.setTypedText(TypedText(T_SINGLEUSEID7));
+
+    positionLabel.setXY(5, 284);
+    positionLabel.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 239, 239));
+    positionLabel.setLinespacing(0);
+    positionLabel.setTypedText(TypedText(T_SINGLEUSEID10));
+
+    positionValue.setXY(101, 284);
+    positionValue.setColor(touchgfx::Color::getColorFrom24BitRGB(245, 239, 239));
+    positionValue.setLinespacing(0);
+    Unicode::snprintf(positionValueBuffer, POSITIONVALUE_SIZE, "%s", TypedText(T_SINGLEUSEID12).getText());
+    positionValue.setWildcard(positionValueBuffer);
+    positionValue.resizeToCurrentText();
+    positionValue.setTypedText(TypedText(T_SINGLEUSEID11));
 
     add(box1);
     add(title);
@@ -85,6 +98,8 @@ Screen1ViewBase::Screen1ViewBase() :
     add(powerValue);
     add(BallLabel);
     add(ballNbr);
+    add(positionLabel);
+    add(positionValue);
 }
 
 void Screen1ViewBase::setupScreen()

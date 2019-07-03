@@ -30,7 +30,7 @@ public:
     void update();
     void btnPlusPressed();
     void btnMinusPressed();
-    void hardButtonPressed(uint16_t numberOfButtonpressed);
+    void hardInterrupt(uint16_t interruptNumber);
 
 private:
     Screen1Presenter();

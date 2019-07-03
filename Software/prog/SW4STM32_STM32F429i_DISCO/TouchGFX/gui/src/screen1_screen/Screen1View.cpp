@@ -43,3 +43,9 @@ void Screen1View::setPower(int power) {
 
 	boxProgress1.setValue(power);
 }
+
+void Screen1View::setPosition(int position) {
+	Unicode::snprintf(positionValueBuffer,POSITIONVALUE_SIZE, "%d",position);
+	positionValue.invalidate();
+
+}

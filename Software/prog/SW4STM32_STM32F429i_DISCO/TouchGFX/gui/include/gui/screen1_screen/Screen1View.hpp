@@ -19,7 +19,7 @@ public:
     void btnMinusPressed();
     void btnPlusPressed();
     void setPower(int power);
-
+    void setPosition(int position);
 protected:
 };
 

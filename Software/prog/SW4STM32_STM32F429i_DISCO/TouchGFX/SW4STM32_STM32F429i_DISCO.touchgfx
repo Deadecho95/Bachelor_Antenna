@@ -170,7 +170,7 @@
             "LineSpacing": 0,
             "Name": "power",
             "X": 5,
-            "Y": 265,
+            "Y": 253,
             "Width": 77,
             "Height": 25,
             "Type": "TextArea",
@@ -197,8 +197,8 @@
               "BufferSize": 10
             },
             "Name": "powerValue",
-            "X": 82,
-            "Y": 265,
+            "X": 80,
+            "Y": 253,
             "Width": 41,
             "Height": 25,
             "Type": "TextArea",
@@ -221,7 +221,7 @@
             "LineSpacing": 0,
             "Name": "BallLabel",
             "X": 137,
-            "Y": 265,
+            "Y": 253,
             "Width": 70,
             "Height": 25,
             "Type": "TextArea",
@@ -249,7 +249,58 @@
             },
             "Name": "ballNbr",
             "X": 207,
-            "Y": 265,
+            "Y": 253,
+            "Width": 28,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId10",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Name": "positionLabel",
+            "X": 5,
+            "Y": 284,
+            "Width": 95,
+            "Height": 25,
+            "Type": "TextArea",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "TextId": "SingleUseId11",
+            "TextRotation": "0",
+            "Color": {
+              "Red": 245,
+              "Green": 239,
+              "Blue": 239
+            },
+            "Alpha": 255,
+            "AutoSize": true,
+            "LineSpacing": 0,
+            "Wildcard1": {
+              "TextId": "SingleUseId12",
+              "UseBuffer": true,
+              "BufferSize": 10
+            },
+            "Name": "positionValue",
+            "X": 101,
+            "Y": 284,
             "Width": 28,
             "Height": 25,
             "Type": "TextArea",
@@ -328,6 +379,18 @@
       {
         "TextEntryId": "SingleUseId9",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId10",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId11",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId12",
+        "IsResource": false
       }
     ],
     "Name": "MyApplication",
@@ -346,11 +409,11 @@
       "Version": "1.0.0",
       "Description": "STM32CubeMX Generated Simulator Application Template",
       "AvailableColorDepths": [
-        16
+       16
       ],
       "AvailableImageFormats": {
-        "16": {
-          "Opaque": "RGB565",
+       "16": {
+      "Opaque": "RGB565",
           "NonOpaque": "ARGB8888"
         }
       },

@@ -12,7 +12,8 @@
 #define MAX_BIT_SIGNAL 8
 #define CRC_SIGNAL 4
 #define NBR_OF_BUTTONS 2
-
+#define MAX_BALL 15
+#define USART_BUFFER_SIZE 20
 //different type of interruptions
 typedef enum interrupt {
 	BUTTON1press = 0,

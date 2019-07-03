@@ -58,11 +58,11 @@ public:
 	* @param bitNbr: the bit number
 	* * @param bitValue: the value of the bit
 	*/
-	void readBits(uint8_t bitNbr, bool bitValue);
+	void readBits(uint8_t bitNbr);
 
 private:
-	std::array<bool, MAX_BIT_SIGNAL> signalArray;
-	uint16_t signalReceived;
+	std::array<bool, MAX_BIT_SIGNAL+CRC_SIGNAL+START_BIT> signalArray;
+	uint8_t signalValue;
 	bool goodSignal;
 	uint32_t ADC3val;
 	uint32_t ADC1val;

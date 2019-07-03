@@ -44,6 +44,8 @@ public:
     int getBallNbr();
     void setPower(uint16_t value);
     int getPower();
+    void setPosition(uint16_t value);
+    int getPosition();
     void newSignal();
 protected:
     /**
@@ -52,7 +54,7 @@ protected:
     ModelListener* modelListener;
 	uint16_t ballNbr;
 	uint16_t power;
-	uint16_t newSignaliscomming;
+	uint16_t position;
 };
 
 #endif /* MODEL_HPP */

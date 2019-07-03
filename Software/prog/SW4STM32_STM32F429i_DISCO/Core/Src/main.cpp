@@ -84,17 +84,17 @@ I2C_HandleTypeDef hi2c3;
 
 SPI_HandleTypeDef hspi5;
 
-TIM_HandleTypeDef htim2;
+UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
 osMessageQId ADCQueue1Handle;
 osMessageQId InterruptQueueHandle;
 osMessageQId ChosenBallQueueHandle;
 osMessageQId ADCQueue2Handle;
-osTimerId check_signal_timerHandle;
 /* USER CODE BEGIN PV */
 osThreadId controllerTaskHandle;
-
+uint8_t count;
+uint8_t aRxBuffer[USART_BUFFER_SIZE];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -109,9 +109,8 @@ extern void GRAPHICS_MainTask(void);
 static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
 static void MX_DAC_Init(void);
-static void MX_TIM2_Init(void);
+static void MX_USART2_UART_Init(void);
 void StartDefaultTask(void const * argument);
-void check_signal(void const * argument);
 
 /* USER CODE BEGIN PFP */
 void StartControllerTask(void const * argument);
@@ -155,9 +154,10 @@ int main(void)
   MX_ADC1_Init();
   MX_ADC3_Init();
   MX_DAC_Init();
-  MX_TIM2_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
-
+  count = 0;
+  HAL_UART_Receive_IT(&huart2, (uint8_t *)aRxBuffer, 1);
   /* USER CODE END 2 */
 
 /* Initialise the graphical hardware */
@@ -175,11 +175,6 @@ int main(void)
   /* USER CODE BEGIN RTOS_SEMAPHORES */
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
-
-  /* Create the timer(s) */
-  /* definition and creation of check_signal_timer */
-  osTimerDef(check_signal_timer, check_signal);
-  check_signal_timerHandle = osTimerCreate(osTimer(check_signal_timer), osTimerPeriodic, NULL);
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
@@ -215,6 +210,7 @@ int main(void)
   /* add threads, ... */
   osThreadDef(controllerTask, StartControllerTask, osPriorityNormal, 0, 1024);
   controllerTaskHandle = osThreadCreate(osThread(controllerTask), NULL);
+  osThreadSuspend(controllerTaskHandle);
   /* USER CODE END RTOS_THREADS */
 
   /* Start scheduler */
@@ -314,7 +310,7 @@ static void MX_ADC1_Init(void)
   hadc1.Init.DataAlign = ADC_DATAALIGN_RIGHT;
   hadc1.Init.NbrOfConversion = 1;
   hadc1.Init.DMAContinuousRequests = DISABLE;
-  hadc1.Init.EOCSelection = ADC_EOC_SINGLE_CONV;
+  hadc1.Init.EOCSelection = ADC_EOC_SEQ_CONV;
   if (HAL_ADC_Init(&hadc1) != HAL_OK)
   {
     Error_Handler();
@@ -533,60 +529,35 @@ void MX_SPI5_Init(void)
 }
 
 /**
-  * @brief TIM2 Initialization Function
+  * @brief USART2 Initialization Function
   * @param None
   * @retval None
   */
-static void MX_TIM2_Init(void)
+static void MX_USART2_UART_Init(void)
 {
 
-  /* USER CODE BEGIN TIM2_Init 0 */
+  /* USER CODE BEGIN USART2_Init 0 */
 
-  /* USER CODE END TIM2_Init 0 */
+  /* USER CODE END USART2_Init 0 */
 
-  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
-  TIM_MasterConfigTypeDef sMasterConfig = {0};
-  TIM_OC_InitTypeDef sConfigOC = {0};
+  /* USER CODE BEGIN USART2_Init 1 */
 
-  /* USER CODE BEGIN TIM2_Init 1 */
-
-  /* USER CODE END TIM2_Init 1 */
-  htim2.Instance = TIM2;
-  htim2.Init.Prescaler = 0;
-  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim2.Init.Period = 18;
-  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
-  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
-  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 9600;
+  huart2.Init.WordLength = UART_WORDLENGTH_9B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_EVEN;
+  huart2.Init.Mode = UART_MODE_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_HalfDuplex_Init(&huart2) != HAL_OK)
   {
     Error_Handler();
   }
-  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
-  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  if (HAL_TIM_OC_Init(&htim2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
-  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
-  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  sConfigOC.OCMode = TIM_OCMODE_TOGGLE;
-  sConfigOC.Pulse = 0;
-  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
-  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
-  if (HAL_TIM_OC_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN TIM2_Init 2 */
+  /* USER CODE BEGIN USART2_Init 2 */
 
-  /* USER CODE END TIM2_Init 2 */
+  /* USER CODE END USART2_Init 2 */
 
 }
 
@@ -772,14 +743,6 @@ void StartDefaultTask(void const * argument)
   /* USER CODE END 5 */ 
 }
 
-/* check_signal function */
-void check_signal(void const * argument)
-{
-  /* USER CODE BEGIN check_signal */
-  
-  /* USER CODE END check_signal */
-}
-
 /**
   * @brief  Period elapsed callback in non blocking mode
   * @note   This function is called  when TIM6 interrupt took place, inside
@@ -791,7 +754,6 @@ void check_signal(void const * argument)
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
 {
   /* USER CODE BEGIN Callback 0 */
-
   /* USER CODE END Callback 0 */
   if (htim->Instance == TIM6) {
     HAL_IncTick();

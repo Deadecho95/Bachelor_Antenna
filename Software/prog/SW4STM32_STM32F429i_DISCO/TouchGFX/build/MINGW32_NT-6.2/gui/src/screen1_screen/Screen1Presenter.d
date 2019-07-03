@@ -40,7 +40,7 @@ build/MINGW32_NT-6.2/gui/src/screen1_screen/Screen1Presenter.o: \
  ../Middlewares/ST/TouchGFX/touchgfx///framework/include/touchgfx/JSMOCHelper.hpp \
  ../Middlewares/ST/TouchGFX/touchgfx///framework/include/mvp/Presenter.hpp \
  ../Middlewares/ST/TouchGFX/touchgfx///framework/include/mvp/MVPHeap.hpp \
- gui/include/gui/model/Model.hpp gui/include/gui/config.h \
+ gui/include/gui/model/Model.hpp \
  gui/include/gui/screen1_screen/Screen1Presenter.hpp \
  gui/include/gui/model/ModelListener.hpp \
  ../Middlewares/ST/TouchGFX/touchgfx///framework/include/touchgfx/widgets/Box.hpp \
@@ -154,8 +154,6 @@ generated/gui_generated/include/gui_generated/common/FrontendApplicationBase.hpp
 ../Middlewares/ST/TouchGFX/touchgfx///framework/include/mvp/MVPHeap.hpp:
 
 gui/include/gui/model/Model.hpp:
-
-gui/include/gui/config.h:
 
 gui/include/gui/screen1_screen/Screen1Presenter.hpp:
 

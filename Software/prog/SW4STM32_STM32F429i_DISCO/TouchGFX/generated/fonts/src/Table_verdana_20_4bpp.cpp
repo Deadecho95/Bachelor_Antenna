@@ -79,10 +79,14 @@ KEEP extern const touchgfx::GlyphNode glyphs_verdana_20_4bpp[] FONT_LOCATION_FLA
     {  5133, 101,  10,  11,  11,   1,  12,  58,   5, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
     {  5188, 105,   3,  14,  14,   1,   5, 255,   0, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
     {  5216, 108,   3,  15,  15,   1,   5, 255,   0, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
-    {  5246, 111,  11,  11,  11,   1,  12,  63,   5, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
-    {  5312, 114,   8,  11,  11,   1,   9,  68,   2, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
-    {  5356, 118,  12,  11,  11,   0,  12,  70,   4, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
-    {  5422, 119,  16,  11,  11,   0,  16,  74,   2, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
-    {  5510, 176,   9,   8,  14,   1,  11, 255,   0, touchgfx::GLYPH_DATA_FORMAT_A4 | 0}
+    {  5246, 110,  10,  11,  11,   1,  13,  63,   1, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5301, 111,  11,  11,  11,   1,  12,  64,   5, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5367, 112,  11,  15,  11,   1,  12,  69,   1, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5457, 114,   8,  11,  11,   1,   9,  70,   2, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5501, 115,   9,  11,  11,   1,  10,  72,   2, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5556, 116,   8,  14,  14,   0,   8, 255,   0, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5612, 118,  12,  11,  11,   0,  12,  74,   4, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5678, 119,  16,  11,  11,   0,  16,  78,   2, touchgfx::GLYPH_DATA_FORMAT_A4 | 0},
+    {  5766, 176,   9,   8,  14,   1,  11, 255,   0, touchgfx::GLYPH_DATA_FORMAT_A4 | 0}
 };
 

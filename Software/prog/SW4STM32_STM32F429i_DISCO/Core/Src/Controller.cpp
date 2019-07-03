@@ -21,7 +21,7 @@ Controller::Controller() {
 		signalArray[var] = 0;
 	}
 
-	signalReceived = 0;
+	signalValue = 0;
 	goodSignal = 0;
 	ADC1Flag = 0;
 	ADC3Flag = 0;
@@ -42,45 +42,24 @@ Controller* Controller::getInstance() {
 
 void Controller::taskEntry() {
 
-	uint16_t result = 0;
-	uint8_t crc = 0;
-	uint8_t received_crc = 0;
-
-	// 2^x * bit --> signal binary to integer
-	for (int var = 0; var < MAX_BIT_SIGNAL; ++var) {
-		// MAX_BIT_SIGNAL+2-var --> +2 because the start bit
-		result = result+pow(2,MAX_BIT_SIGNAL-1-var)*signalArray[MAX_BIT_SIGNAL+START_BIT-var];
-		crc = crc + signalArray[var+2];
+	//wait for adc
+	while(!ADC3Flag || !ADC1Flag){
 	}
 
-	//crc binary to integer
-	for (int var = 0; var < CRC_SIGNAL; ++var) {
-		received_crc = received_crc+pow(2,CRC_SIGNAL-1-var)*signalArray[CRC_SIGNAL+MAX_BIT_SIGNAL+START_BIT-var];
-	}
+	//get the chosen ball nbr by the user
+	osEvent event = osMessageGet(ChosenBallQueueHandle,osWaitForever);
 
-	//check if crc ok
-	if(crc == received_crc){
-		signalReceived = result;
-
-		//wait for adc
-		while(!ADC3Flag || !ADC1Flag){
+	//check if current signal and chosen ball are identical
+	if(event.status == osStatus::osEventMessage){
+		if(signalValue ==event.value.v){
+			goodSignal = 1;
+			//send adc value to the model
+			//todo in percent//
+			osMessagePut(ADCQueue1Handle,ADC1val*100/4096,NULL);
+			osMessagePut(ADCQueue2Handle,ADC3val*100/4096,NULL);
 		}
-
-		//get the chosen ball nbr by the user
-		osEvent event = osMessageGet(ChosenBallQueueHandle,osWaitForever);
-
-		//check if current signal and chosen ball are identical
-		if(event.status == osStatus::osEventMessage){
-			if(signalReceived ==event.value.v){
-				goodSignal = 1;
-				//send adc value to the model
-				//todo in percent//
-				osMessagePut(ADCQueue1Handle,ADC1val,NULL);
-				osMessagePut(ADCQueue2Handle,ADC3val,NULL);
-			}
-			else{
-				goodSignal = 0;
-			}
+		else{
+			goodSignal = 0;
 		}
 	}
 	osThreadSuspend(controllerTaskHandle);
@@ -118,17 +97,14 @@ void Controller::IsInterrupt(uint8_t value) {
 
 		case interrupt::RECEIVED_SIGNAL:
 			osMessagePut(InterruptQueueHandle,interrupt::RECEIVED_SIGNAL,NULL);
-			osThreadResume(controllerTaskHandle);
 			break;
 		default:
 			break;
 	}
 }
 
-void Controller::readBits(uint8_t bitNbr, bool bitValue) {
+void Controller::readBits(uint8_t signalValue) {
 
-	signalArray[bitNbr] = bitValue;
-	if(bitNbr == MAX_BIT_SIGNAL){
-		osThreadResume(controllerTaskHandle);
-	}
+	this->signalValue = signalValue;
+	osThreadResume(controllerTaskHandle);
 }

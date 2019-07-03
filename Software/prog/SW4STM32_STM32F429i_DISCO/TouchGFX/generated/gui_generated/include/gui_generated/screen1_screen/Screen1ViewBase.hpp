@@ -55,6 +55,8 @@ protected:
     touchgfx::TextAreaWithOneWildcard powerValue;
     touchgfx::TextArea BallLabel;
     touchgfx::TextAreaWithOneWildcard ballNbr;
+    touchgfx::TextArea positionLabel;
+    touchgfx::TextAreaWithOneWildcard positionValue;
 
     /*
      * Wildcard Buffers
@@ -63,6 +65,8 @@ protected:
     touchgfx::Unicode::UnicodeChar powerValueBuffer[POWERVALUE_SIZE];
     static const uint16_t BALLNBR_SIZE = 10;
     touchgfx::Unicode::UnicodeChar ballNbrBuffer[BALLNBR_SIZE];
+    static const uint16_t POSITIONVALUE_SIZE = 10;
+    touchgfx::Unicode::UnicodeChar positionValueBuffer[POSITIONVALUE_SIZE];
 
 private:
 
