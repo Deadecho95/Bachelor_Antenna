@@ -8,3 +8,11 @@ DEFINE footprint3 footprint3
 ASSIGN footprint3 libMode shared
 DEFINE footprint4 footprint4
 ASSIGN footprint4 libMode shared
+DEFINE footprint5 footprint5
+ASSIGN footprint5 libMode shared
+DEFINE footprint6 footprint6
+ASSIGN footprint6 libMode shared
+DEFINE footprint7 footprint7
+ASSIGN footprint7 libMode shared
+DEFINE footprint8 footprint8
+ASSIGN footprint8 libMode shared
