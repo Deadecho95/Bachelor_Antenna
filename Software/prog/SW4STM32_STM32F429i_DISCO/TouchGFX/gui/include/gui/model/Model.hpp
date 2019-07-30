@@ -41,12 +41,17 @@ public:
     void tick();
 
     void setBallNbr(uint16_t ballNbr);
-    int getBallNbr();
+    uint16_t getBallNbr();
     void setPower(uint16_t value);
-    int getPower();
+    uint16_t getPower();
     void setPosition(uint16_t value);
-    int getPosition();
+    uint16_t getPosition();
     void newSignal();
+    void activateCalibration();
+    void changeState(state);
+    void setMinPower(uint16_t value);
+    int16_t getMinPower();
+
 protected:
     /**
      * Pointer to the currently active presenter.
@@ -54,6 +59,7 @@ protected:
     ModelListener* modelListener;
 	uint16_t ballNbr;
 	uint16_t power;
+	uint16_t minPower;
 	uint16_t position;
 };
 

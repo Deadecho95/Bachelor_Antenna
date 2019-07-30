@@ -23,6 +23,166 @@
             "Moveable": false
           },
           {
+            "Pressed": "__designer\\blue_buttons_round_edge_small_pressed.png",
+            "Released": "__designer\\blue_buttons_round_edge_small.png",
+            "Alpha": 255,
+            "TextId": "SingleUseId13",
+            "ReleasedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "PressedColor": {
+              "Red": 255,
+              "Green": 255,
+              "Blue": 255
+            },
+            "TextRotation": "0",
+            "Style": "Style4",
+            "Name": "calibrateButton",
+            "X": 35,
+            "Y": 64,
+            "Width": 170,
+            "Height": 60,
+            "Type": "ButtonWithLabel",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
+            "Alpha": 255,
+            "ButtonTrigger": {
+              "Type": "ClickButtonTrigger"
+            },
+            "ButtonStyles": [
+              {
+                "Type": "TextButtonStyle",
+                "X": 0,
+                "Y": 33,
+                "TextId": "SingleUseId14",
+                "TextRotation": "0",
+                "ColorReleased": {
+                  "Red": 255,
+                  "Green": 255,
+                  "Blue": 255
+                },
+                "ColorPressed": {
+                  "Red": 182,
+                  "Green": 182,
+                  "Blue": 182
+                }
+              },
+              {
+                "Type": "BoxWithBorderButtonStyle",
+                "X": 0,
+                "Y": 0,
+                "Width": 170,
+                "Height": 96,
+                "LockToFlexButtonSize": true,
+                "BorderSize": 5,
+                "ColorReleased": {
+                  "Red": 0,
+                  "Green": 153,
+                  "Blue": 204
+                },
+                "ColorPressed": {
+                  "Red": 0,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorBorderReleased": {
+                  "Red": 51,
+                  "Green": 102,
+                  "Blue": 153
+                },
+                "ColorBorderPressed": {
+                  "Red": 0,
+                  "Green": 51,
+                  "Blue": 102
+                }
+              }
+            ],
+            "Name": "startButton",
+            "X": 35,
+            "Y": 185,
+            "Width": 170,
+            "Height": 96,
+            "Type": "FlexButton",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          }
+        ],
+        "Interactions": [
+          {
+            "InteractionName": "Interaction1",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "calibrateButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "FunctionName": "CalibrateButtonPressed",
+              "Type": "ActionCustom"
+            }
+          },
+          {
+            "InteractionName": "Interaction2",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "TriggerComponent": "startButton",
+              "Type": "TriggerClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main",
+              "Type": "ActionGotoScreen"
+            }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "ButtonKey": 1,
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Main",
+              "Type": "ActionGotoScreen"
+            }
+          }
+        ],
+        "Name": "Menu",
+        "OverrideDefaultBufferSize": false,
+        "CanvasBufferSize": 0
+      },
+      {
+        "Components": [
+          {
+            "Color": {
+              "Red": 28,
+              "Green": 28,
+              "Blue": 28
+            },
+            "Alpha": 255,
+            "Name": "box1",
+            "X": 0,
+            "Y": 0,
+            "Width": 240,
+            "Height": 320,
+            "Type": "Box",
+            "Visible": true,
+            "Draggable": false,
+            "Clickable": false,
+            "Fadeable": false,
+            "Moveable": false
+          },
+          {
             "TextId": "SingleUseId1",
             "TextRotation": "0",
             "Color": {
@@ -301,7 +461,7 @@
             "Name": "positionValue",
             "X": 101,
             "Y": 284,
-            "Width": 28,
+            "Width": 41,
             "Height": 25,
             "Type": "TextArea",
             "Visible": true,
@@ -335,9 +495,32 @@
               "FunctionName": "btnMinusPressed",
               "Type": "ActionCustom"
             }
+          },
+          {
+            "InteractionName": "Interaction3",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "Type": "TriggerNone"
+            },
+            "Action": {
+              "Type": "ActionNone"
+            }
+          },
+          {
+            "InteractionName": "Interaction4",
+            "HasCompletedTrigger": false,
+            "Trigger": {
+              "ButtonKey": 2,
+              "Type": "TriggerPhysicalButtonClicked"
+            },
+            "Action": {
+              "ScreenTransitionType": "ScreenTransitionNone",
+              "ActionComponent": "Menu",
+              "Type": "ActionGotoScreen"
+            }
           }
         ],
-        "Name": "Screen1",
+        "Name": "Main",
         "OverrideDefaultBufferSize": false,
         "CanvasBufferSize": 3600
       }
@@ -391,6 +574,14 @@
       {
         "TextEntryId": "SingleUseId12",
         "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId13",
+        "IsResource": false
+      },
+      {
+        "TextEntryId": "SingleUseId14",
+        "IsResource": false
       }
     ],
     "Name": "MyApplication",
@@ -399,7 +590,7 @@
       "Height": 320
     },
     "SelectedColorDepth": 16,
-    "StartupScreenName": "Screen1",
+    "StartupScreenName": "Menu",
     "SelectedStartupLanguage": "GB",
     "Skin": "Blue",
     "TouchGfxPath": "../Middlewares/ST/TouchGFX/touchgfx/",
@@ -409,11 +600,11 @@
       "Version": "1.0.0",
       "Description": "STM32CubeMX Generated Simulator Application Template",
       "AvailableColorDepths": [
-       16
+        16
       ],
       "AvailableImageFormats": {
-       "16": {
-      "Opaque": "RGB565",
+        "16": {
+          "Opaque": "RGB565",
           "NonOpaque": "ARGB8888"
         }
       },
