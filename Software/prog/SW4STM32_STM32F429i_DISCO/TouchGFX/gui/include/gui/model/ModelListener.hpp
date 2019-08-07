@@ -29,9 +29,9 @@ public:
         model = m;
     }
 
-    virtual void btnMinusPressed()=0;
-    virtual void hardInterrupt(uint16_t interruptNumber)=0;
-    virtual void update()=0;
+    virtual void hardInterrupt(uint16_t interruptNumber){};
+    virtual void update(){};
+    virtual void ADCValue(uint16_t value){};
 protected:
     Model* model;
 };

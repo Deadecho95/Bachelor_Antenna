@@ -84,6 +84,8 @@ I2C_HandleTypeDef hi2c3;
 
 SPI_HandleTypeDef hspi5;
 
+TIM_HandleTypeDef htim2;
+
 UART_HandleTypeDef huart2;
 
 osThreadId defaultTaskHandle;
@@ -91,10 +93,13 @@ osMessageQId ADCQueue1Handle;
 osMessageQId InterruptQueueHandle;
 osMessageQId ChosenBallQueueHandle;
 osMessageQId ADCQueue2Handle;
+osMessageQId stateQueueHandle;
+osTimerId reboundTimerHandle;
 /* USER CODE BEGIN PV */
 osThreadId controllerTaskHandle;
 uint8_t count;
 uint8_t aRxBuffer[USART_BUFFER_SIZE];
+bool buttonsActive = true;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -110,14 +115,18 @@ static void MX_ADC1_Init(void);
 static void MX_ADC3_Init(void);
 static void MX_DAC_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_TIM2_Init(void);
 void StartDefaultTask(void const * argument);
+void reboundTimerCallback(void const * argument);
 
 /* USER CODE BEGIN PFP */
 void StartControllerTask(void const * argument);
+
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
 /* USER CODE END 0 */
 
 /**
@@ -155,6 +164,7 @@ int main(void)
   MX_ADC3_Init();
   MX_DAC_Init();
   MX_USART2_UART_Init();
+  MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
   count = 0;
   HAL_UART_Receive_IT(&huart2, (uint8_t *)aRxBuffer, 1);
@@ -176,6 +186,11 @@ int main(void)
   /* add semaphores, ... */
   /* USER CODE END RTOS_SEMAPHORES */
 
+  /* Create the timer(s) */
+  /* definition and creation of reboundTimer */
+  osTimerDef(reboundTimer, reboundTimerCallback);
+  reboundTimerHandle = osTimerCreate(osTimer(reboundTimer), osTimerOnce, NULL);
+
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
   /* USER CODE END RTOS_TIMERS */
@@ -196,6 +211,10 @@ int main(void)
   /* definition and creation of ADCQueue2 */
   osMessageQDef(ADCQueue2, 1, uint16_t);
   ADCQueue2Handle = osMessageCreate(osMessageQ(ADCQueue2), NULL);
+
+  /* definition and creation of stateQueue */
+  osMessageQDef(stateQueue, 1, uint16_t);
+  stateQueueHandle = osMessageCreate(osMessageQ(stateQueue), NULL);
 
   /* USER CODE BEGIN RTOS_QUEUES */
   /* add queues, ... */
@@ -439,7 +458,8 @@ static void MX_DAC_Init(void)
     Error_Handler();
   }
   /* USER CODE BEGIN DAC_Init 2 */
-
+	HAL_DAC_SetValue(&hdac,DAC_CHANNEL_2,DAC_ALIGN_12B_R,4095);
+	HAL_DAC_Start(&hdac,DAC_CHANNEL_2);
   /* USER CODE END DAC_Init 2 */
 
 }
@@ -529,6 +549,64 @@ void MX_SPI5_Init(void)
 }
 
 /**
+  * @brief TIM2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM2_Init(void)
+{
+
+  /* USER CODE BEGIN TIM2_Init 0 */
+
+  /* USER CODE END TIM2_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+  TIM_OC_InitTypeDef sConfigOC = {0};
+
+  /* USER CODE BEGIN TIM2_Init 1 */
+
+  /* USER CODE END TIM2_Init 1 */
+  htim2.Instance = TIM2;
+  htim2.Init.Prescaler = 18;
+  htim2.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim2.Init.Period = 100;
+  htim2.Init.ClockDivision = TIM_CLOCKDIVISION_DIV4;
+  htim2.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  if (HAL_TIM_Base_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim2, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  if (HAL_TIM_OC_Init(&htim2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_OC1REF;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim2, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sConfigOC.OCMode = TIM_OCMODE_TOGGLE;
+  sConfigOC.Pulse = 0;
+  sConfigOC.OCPolarity = TIM_OCPOLARITY_HIGH;
+  sConfigOC.OCFastMode = TIM_OCFAST_DISABLE;
+  if (HAL_TIM_OC_ConfigChannel(&htim2, &sConfigOC, TIM_CHANNEL_1) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM2_Init 2 */
+
+  /* USER CODE END TIM2_Init 2 */
+
+}
+
+/**
   * @brief USART2 Initialization Function
   * @param None
   * @retval None
@@ -544,10 +622,10 @@ static void MX_USART2_UART_Init(void)
 
   /* USER CODE END USART2_Init 1 */
   huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
+  huart2.Init.BaudRate = 8500;
   huart2.Init.WordLength = UART_WORDLENGTH_9B;
   huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_EVEN;
+  huart2.Init.Parity = UART_PARITY_NONE;
   huart2.Init.Mode = UART_MODE_RX;
   huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
   huart2.Init.OverSampling = UART_OVERSAMPLING_16;
@@ -667,7 +745,7 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin : RECEIVED_SIGNAL_Pin */
   GPIO_InitStruct.Pin = RECEIVED_SIGNAL_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   HAL_GPIO_Init(RECEIVED_SIGNAL_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : STLINK_RX_Pin STLINK_TX_Pin */
@@ -678,17 +756,11 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Alternate = GPIO_AF7_USART1;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : BUTTON1_Pin */
-  GPIO_InitStruct.Pin = BUTTON1_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BUTTON1_GPIO_Port, &GPIO_InitStruct);
-
-  /*Configure GPIO pin : BUTTON2_Pin */
-  GPIO_InitStruct.Pin = BUTTON2_Pin;
-  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
-  GPIO_InitStruct.Pull = GPIO_NOPULL;
-  HAL_GPIO_Init(BUTTON2_GPIO_Port, &GPIO_InitStruct);
+  /*Configure GPIO pins : BUTTON1_Pin BUTTON2_Pin */
+  GPIO_InitStruct.Pin = BUTTON1_Pin|BUTTON2_Pin;
+  GPIO_InitStruct.Mode = GPIO_MODE_IT_FALLING;
+  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  HAL_GPIO_Init(GPIOC, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI0_IRQn, 5, 0);
@@ -706,9 +778,6 @@ static void MX_GPIO_Init(void)
 /* USER CODE END Header_StartDefaultTask */
 void StartControllerTask(void const * argument)
 {
-
-
-
   /* USER CODE BEGIN 5 */
   /* Infinite loop */
   for(;;)
@@ -737,10 +806,16 @@ void StartDefaultTask(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-	  /* controller */
-	  Controller::getInstance()->taskEntry();
   }
   /* USER CODE END 5 */ 
+}
+
+/* reboundTimerCallback function */
+void reboundTimerCallback(void const * argument)
+{
+  /* USER CODE BEGIN reboundTimerCallback */
+  buttonsActive = true;
+  /* USER CODE END reboundTimerCallback */
 }
 
 /**
