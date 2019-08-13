@@ -11,6 +11,12 @@ public:
     virtual ~MenuView() {}
     virtual void setupScreen();
     virtual void tearDownScreen();
+
+    /**
+      * @brief calibrate button is pressed
+      * @param None
+      * @retval None
+      */
     void CalibrateButtonPressed();
 protected:
 };

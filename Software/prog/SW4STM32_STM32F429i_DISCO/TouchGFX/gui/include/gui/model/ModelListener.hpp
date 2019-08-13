@@ -29,8 +29,26 @@ public:
         model = m;
     }
 
+    /**
+      * @brief an interruption occured
+      * @param interruptNumber : the number of the interrupt
+      * @retval None
+      */
     virtual void hardInterrupt(uint16_t interruptNumber){};
+
+
+    /**
+      * @brief Update the screen
+      * @param None
+      * @retval None
+      */
     virtual void update(){};
+
+    /**
+      * @brief set the adc Value
+      * @param value from the ADC
+      * @retval None
+      */
     virtual void ADCValue(uint16_t value){};
 protected:
     Model* model;

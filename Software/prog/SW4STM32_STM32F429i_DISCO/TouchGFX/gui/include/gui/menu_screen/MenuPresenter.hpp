@@ -27,10 +27,25 @@ public:
 
     virtual ~MenuPresenter() {};
 
+    /**
+      * @brief an interruption occured
+      * @param interruptNumber : the number of the interrupt
+      * @retval None
+      */
 	void hardInterrupt(uint16_t interruptNumber);
 
+    /**
+      * @brief calibrate the hard comparator
+      * @param None
+      * @retval None
+      */
 	void calibrate();
 
+    /**
+      * @brief set the adc Value
+      * @param value from the ADC
+      * @retval None
+      */
     void ADCValue(uint16_t value);
 
 private:

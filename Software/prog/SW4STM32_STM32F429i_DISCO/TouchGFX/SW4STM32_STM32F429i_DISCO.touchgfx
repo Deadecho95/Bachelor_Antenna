@@ -600,11 +600,11 @@
       "Version": "1.0.0",
       "Description": "STM32CubeMX Generated Simulator Application Template",
       "AvailableColorDepths": [
-        16
+       16
       ],
       "AvailableImageFormats": {
-        "16": {
-          "Opaque": "RGB565",
+       "16": {
+      "Opaque": "RGB565",
           "NonOpaque": "ARGB8888"
         }
       },

@@ -13,29 +13,53 @@ Model::Model() : modelListener(0)
 	power = 0;
 	position = 0;
 	minPower = 0;
+	noSignal = 0;
 }
 
 void Model::tick()
 {
+
 	osEvent event;
+
+	//read all events
 	do{
 		event = osMessageGet(InterruptQueueHandle,0);
+		//if message
 		if(event.status == osStatus::osEventMessage){
+			//send the interrupt number
 			modelListener->hardInterrupt(event.value.v);
 		}
 	}while(event.status == osStatus::osEventMessage);
 
+
 	event = osMessageGet(ADCQueue1Handle,0);
+	//read adc value
 	if(event.status == osStatus::osEventMessage){
 		modelListener->ADCValue(event.value.v);
+		//there is a signal
+		noSignal = 0;
+	}
+	else if(noSignal < MIN_TIME_WITHOUT_SIGNAL){
+		//there is not a signal
+		noSignal = noSignal + 1;
 	}
 
 	event = osMessageGet(ADCQueue2Handle,0);
+	//read adc value
 	if(event.status == osStatus::osEventMessage){
 		setPosition(event.value.v);
 	}
 
+	//if no signal while MIN_TIME_WITHOUT_SIGNAL time
+	if(noSignal == MIN_TIME_WITHOUT_SIGNAL){
+		//all displayed value are 0
+		modelListener->ADCValue(0);
+		setPosition(0);
+	}
+
+	//update the screen
 	modelListener->update();
+
 
 }
 
@@ -65,8 +89,7 @@ uint16_t Model::getPosition() {
 }
 
 void Model::newSignal() {
-		osMessagePut(ChosenBallQueueHandle,ballNbr,0);
-		osThreadResume(controllerTaskHandle);
+	osMessagePut(ChosenBallQueueHandle,ballNbr,0);
 }
 
 void Model::activateCalibration() {

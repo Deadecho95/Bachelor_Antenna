@@ -11,7 +11,7 @@
 #include "Controller.h"
 #include "cmsis_os.h"
 
-
+/*variables*/
 extern ADC_HandleTypeDef hadc1;
 extern ADC_HandleTypeDef hadc3;
 extern uint8_t aRxBuffer[USART_BUFFER_SIZE];
@@ -22,6 +22,7 @@ extern bool buttonsActive;
 
 /**
 * @brief Callback when an ADC completes a conversion
+* @param hadc: ADC Handle
 */
 extern "C" void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 {
@@ -37,6 +38,7 @@ extern "C" void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
 
 /**
 * @brief Callback when an there is an interrupt
+* @param GPIO_Pin: the interrupted pin
 */
 extern "C" void HAL_GPIO_EXTI_Callback(uint16_t GPIO_Pin)
 {
@@ -103,6 +105,11 @@ extern "C" void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 
 }
 
+/**
+  * @brief timer Delay elapsed callbacks
+  * @param htim: timer handle
+  * @retval None
+  */
 extern "C" void HAL_TIM_OC_DelayElapsedCallback(TIM_HandleTypeDef *htim)
 {
   if (htim->Instance == TIM2) {
