@@ -23,12 +23,15 @@ void MainPresenter::update() {
 	//set the view
 	view.setBallNbr(model->getBallNbr());
 
+	//calculate the LPDA power with the adc value
 	powerLPDA = model->getPower()/SLOPE_mVDBm-MIN_LT5537;
 	view.setPower(powerLPDA);
 
+	//calculate the LPDA power with the adc value
 	powerLOOP = model->getPosition()/SLOPE_mVDBm-MIN_LT5537;
 	view.setPosition(powerLOOP);
 
+	//set the progress bar
 	if(powerLPDA > -RECEPTION_LIMIT){
 		view.setPowerBar(-((-powerLPDA-MAX_POWER)*(100/(-(model->getMinPower()/SLOPE_mVDBm-MIN_LT5537)-MAX_POWER))-100));
 	}
@@ -39,7 +42,8 @@ void MainPresenter::update() {
 
 void MainPresenter::btnPlusPressed() {
 
-	int val = (model->getBallNbr()+1)%16;
+
+	int val = (model->getBallNbr()+1)%(MAX_BALL+1);
 	model->setBallNbr(val);
 }
 
@@ -47,7 +51,7 @@ void MainPresenter::btnMinusPressed() {
 
 	int16_t val = model->getBallNbr()-1;
 	if(val < 0){
-		val = 15;
+		val = MAX_BALL;
 	}
 	model->setBallNbr(val);
 

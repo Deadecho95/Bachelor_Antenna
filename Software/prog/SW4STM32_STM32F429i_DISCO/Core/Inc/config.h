@@ -27,7 +27,8 @@
 #define RECEPTION_LIMIT 70	//minimum value in dBm that the lt5537 can see
 #define DAC_INCREMENT 400 //increment for the comparator //\\(it can be changed)\\//
 
-
+//reception
+#define MIN_TIME_WITHOUT_SIGNAL 100
 //different type of interruptions
 typedef enum interrupt {
 	BUTTON1press = 0,

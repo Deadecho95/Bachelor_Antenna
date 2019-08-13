@@ -40,16 +40,81 @@ public:
      */
     void tick();
 
+    /**
+      * @brief set the chosen ball nbr
+      * @param ballNbr : the number of chosen ball
+      * @retval None
+      */
     void setBallNbr(uint16_t ballNbr);
+
+    /**
+      * @brief get the chosen ball nbr
+      * @param None
+      * @retval the number of chosen ball
+      */
     uint16_t getBallNbr();
+
+    /**
+      * @brief set the LPDA power
+      * @param value : the power of the antenna
+      * @retval None
+      */
     void setPower(uint16_t value);
+
+    /**
+      * @brief get the LPDA power
+      * @param None
+      * @retval the power of the antenna
+      */
     uint16_t getPower();
+
+    /**
+      * @brief set the LOOP power
+      * @param value : the power of the antenna
+      * @retval None
+      */
     void setPosition(uint16_t value);
+
+    /**
+      * @brief get the LOOP power
+      * @param None
+      * @retval the power of the antenna
+      */
     uint16_t getPosition();
+
+    /**
+      * @brief a new id arrived
+      * @param None
+      * @retval None
+      */
     void newSignal();
+
+    /**
+      * @brief enable the calibration
+      * @param None
+      * @retval None
+      */
     void activateCalibration();
+
+    /**
+      * @brief change the state of the controller sm
+      * @param state : the state to change
+      * @retval None
+      */
     void changeState(state);
+
+    /**
+      * @brief set the minimum power when no ball emit
+      * @param value : the power of the antenna
+      * @retval None
+      */
     void setMinPower(uint16_t value);
+
+    /**
+      * @brief get the minimum power when no ball emit
+      * @param None
+      * @retval the minimum power of the antenna
+      */
     int16_t getMinPower();
 
 protected:
@@ -61,6 +126,8 @@ protected:
 	uint16_t power;
 	uint16_t minPower;
 	uint16_t position;
+
+	uint16_t noSignal;
 };
 
 #endif /* MODEL_HPP */

@@ -27,10 +27,39 @@ public:
 
     virtual ~MainPresenter() {};
 
+    /**
+      * @brief Update the screen
+      * @param None
+      * @retval None
+      */
     void update();
+
+    /**
+      * @brief plus button pressed
+      * @param None
+      * @retval None
+      */
 	void btnPlusPressed();
+
+    /**
+      * @brief Minus button pressed
+      * @param None
+      * @retval None
+      */
 	void btnMinusPressed();
+
+    /**
+      * @brief an interruption occured
+      * @param interruptNumber : the number of the interrupt
+      * @retval None
+      */
 	void hardInterrupt(uint16_t interruptNumber);
+
+    /**
+      * @brief set the adc Value
+      * @param value from the ADC
+      * @retval None
+      */
 	void ADCValue(uint16_t value);
 
 private:
